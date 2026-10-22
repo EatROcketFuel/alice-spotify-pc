@@ -1,0 +1,92 @@
+{
+  "_comment": "Ключи, начинающиеся с '_', игнорируются. Подробности в README.md",
+
+  "mqtt": {
+    "host": "your-broker.example.com",
+    "port": 1883,
+    "username": "",
+    "password": "",
+    "client_id": "",
+    "tls": false,
+    "tls_insecure": false,
+    "ca_certs": "",
+    "keepalive": 60,
+    "qos": 1,
+    "reconnect_min_delay": 1,
+    "reconnect_max_delay": 60,
+    "ignore_retained": true,
+    "status_topic": "alice/pc/status",
+    "state_prefix": "alice/pc/state"
+  },
+
+  "topics": {
+    "spotify_power": "alice/pc/spotify/power",
+    "media_control": "alice/pc/media/control",
+    "audio_switch": "alice/pc/audio/switch",
+    "spotify_search": "alice/pc/spotify/search"
+  },
+
+  "_button_topics_help": "Topics for Smart Home on/off devices: any message runs command with fixed payload. trigger: any | on",
+  "button_topics": [
+    { "topic": "alice/pc/media/next",       "command": "media_control", "payload": "NEXT",       "trigger": "any" },
+    { "topic": "alice/pc/media/prev",       "command": "media_control", "payload": "PREV",       "trigger": "any" },
+    { "topic": "alice/pc/media/play_pause", "command": "media_control", "payload": "PLAY_PAUSE", "trigger": "any" }
+  ],
+
+  "_payload_aliases_help": "Translate payloads coming from Smart Home bridges (1/0, true/false) into commands",
+  "payload_aliases": {
+    "audio_switch": {
+      "1": "SPEAKERS",
+      "true": "SPEAKERS",
+      "on": "SPEAKERS",
+      "0": "HEADPHONES",
+      "false": "HEADPHONES",
+      "off": "HEADPHONES"
+    }
+  },
+
+  "spotify": {
+    "exe_path": "%APPDATA%\\Spotify\\Spotify.exe",
+    "launch_args": ["--minimized"],
+    "process_name": "Spotify.exe",
+    "close_timeout_seconds": 6,
+    "pause_before_close": false,
+    "prev_presses": 2,
+    "search_mode": "auto",
+
+    "client_id": "PASTE_SPOTIFY_CLIENT_ID",
+    "client_secret": "PASTE_SPOTIFY_CLIENT_SECRET",
+    "redirect_uri": "http://127.0.0.1:8888/callback",
+    "cache_path": ".spotify_token_cache",
+    "device_name": "",
+    "market": "from_token",
+    "auto_launch_on_search": true,
+    "device_wait_seconds": 25
+  },
+
+  "audio": {
+    "backend": "auto",
+    "mode": "app",
+    "devices": {
+      "SPEAKERS": ["Yandex Station", "Яндекс Станция"],
+      "HEADPHONES": ["Headphones", "Наушники"]
+    },
+    "roles": ["console", "multimedia", "communications"],
+    "app_routing": {
+      "enabled": false,
+      "soundvolumeview_path": "tools\\SoundVolumeView\\SoundVolumeView.exe",
+      "processes": ["Spotify.exe"]
+    }
+  },
+
+  "logging": {
+    "level": "INFO",
+    "file": "logs/alice_pc.log",
+    "max_bytes": 1048576,
+    "backup_count": 5
+  },
+
+  "tray": {
+    "notifications": true
+  }
+}

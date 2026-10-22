@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+logs/
+.spotify_token_cache
+*.pyc
+.pytest_cache/

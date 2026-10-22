@@ -1,0 +1,8 @@
+# Python 3.10+ (3.12 recommended), Windows 10/11 x64
+paho-mqtt>=2.1,<3        # MQTT client (callback API v2, auto-reconnect)
+spotipy>=2.24,<3         # Spotify Web API + OAuth token cache
+pystray>=0.19.5,<0.20    # system tray icon
+Pillow>=10.0             # tray icon image
+psutil>=5.9              # find / terminate Spotify.exe
+pycaw>=20240316          # Windows Core Audio: list devices, set default output
+comtypes>=1.4            # COM backend used by pycaw
